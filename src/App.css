@@ -1,0 +1,16 @@
+body {
+  background-color: white;
+  color: black;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+}
+#current_car,#scanning_history {
+  border: 2px solid black; 
+  border-radius: 15px;
+  padding: 4px; 
+  width: 70%; 
+  height: 200px;
+  background-color: white; 
+  color: black; 
+}

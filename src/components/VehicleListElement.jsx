@@ -12,7 +12,7 @@ function VehicleListElement({ plateNumber, recordedTime, tollFee, location }) {
                         <Text>{formatCustomDate(recordedTime)} • {location}</Text>
                     </Flex>
                     <Flex direction={'column'} justifyContent={'center'}>
-                        <Text align={'right'} fontWeight={'black'} fontSize={'2xl'} color={'#00e331'}>
+                        <Text align={'right'} fontWeight={'black'} fontSize={'2xl'} color={'#00ad26'}>
                         ₹{tollFee}
                         </Text>
                     </Flex>

@@ -56,7 +56,7 @@ function App() {
         <Heading padding={'10px'} paddingLeft={'0'} size={'md'}>Recent Tolls</Heading>
         <Card overflowY={'scroll'} height={'500px'} maxH={'500px'}>
           <CardBody>
-            <VStack spacing={'5px'}>
+            <VStack spacing={'20px'}>
               {allTolls.map(r => <VehicleListElement key={r['_id']} plateNumber={r['plate_number']} recordedTime={r['time']} tollFee={r['toll_fee']} location={r['toll_location']}></VehicleListElement>)}
             </VStack>
           </CardBody> 

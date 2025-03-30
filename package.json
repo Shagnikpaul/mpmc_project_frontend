@@ -16,10 +16,13 @@
     "@fontsource-variable/inter": "^5.2.5",
     "@fontsource/open-sans": "^5.2.5",
     "@fontsource/raleway": "^5.2.5",
+    "@syncfusion/ej2-react-barcode-generator": "^29.1.34",
+    "@tanstack/react-query": "^5.71.0",
     "framer-motion": "^12.6.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-icons": "^5.5.0"
+    "react-icons": "^5.5.0",
+    "react-qr-code": "^2.0.15"
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",

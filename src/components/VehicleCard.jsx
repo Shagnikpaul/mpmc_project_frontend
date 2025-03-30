@@ -1,21 +1,37 @@
-import { Card, CardBody, CardFooter, CardHeader, Flex, Heading, Text } from '@chakra-ui/react'
+import { Card, CardBody, CardFooter, CardHeader, Flex, Heading, Text, Divider } from '@chakra-ui/react'
 import React from 'react'
 import { formatCustomDate } from '../../utils/TimeDateFormatter'
 import { CiLocationArrow1 } from "react-icons/ci";
 import { FaRegClock } from "react-icons/fa";
+import QRCode from "react-qr-code";
+
+
 function VehicleCard({ plateNumber = "XXX_XXX_XXX", recordedTime = "2025-03-30T12:10:41.251+00:00", location = "Area 51", tollFee = 0.0 }) {
 
     return (
         <Card>
             <CardHeader>
-                <Text>Licence Plate Number</Text>
-                <Heading size={['xl','2xl','4xl']} fontWeight={'black'}>{plateNumber}</Heading>
+                <Flex justifyContent={'space-between'} wrap={'wrap'}>
+                    <Flex direction={'column'}>
+                        <Text>Licence Plate Number</Text>
+                        <Heading size={['xl', '2xl', '4xl']} fontWeight={'black'}>{plateNumber}</Heading>
+                    </Flex>
+                    <QRCode
+                        size={256}
+                        style={{ height: "auto", maxWidth: "15%", width: "15%" }}
+                        value={plateNumber}
+                        viewBox={`0 0 256 256`} />
+                </Flex>
+
+
+
             </CardHeader>
             <CardBody>
                 <Text>Toll Fee</Text>
                 <Heading>₹{tollFee}</Heading>
             </CardBody>
-            <CardFooter>
+            
+            <CardFooter borderTop={'3px'} borderStyle={'dashed'} borderColor={'grey'}>
                 <Flex width={'full'} justifyContent={'space-between'}>
                     <Flex direction={'column'}>
                         <Flex>

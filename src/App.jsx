@@ -1,7 +1,7 @@
 import { Card, CardBody, Text, Container, Heading, VStack } from '@chakra-ui/react'
 import './App.css'
 import VehicleCard from './components/VehicleCard'
-import { useEffect, useState } from 'react';
+
 
 import { useQuery } from '@tanstack/react-query';
 import RecentTolls from './components/RecentTolls';

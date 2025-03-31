@@ -1,6 +1,7 @@
 import { Card, CardBody, Flex, Text } from '@chakra-ui/react'
 import React from 'react'
 import { formatCustomDate } from '../../utils/TimeDateFormatter'
+import VehicleProfile from './VehicleProfile'
 
 function VehicleListElement({ plateNumber, recordedTime, tollFee, location }) {
     return (
@@ -8,7 +9,8 @@ function VehicleListElement({ plateNumber, recordedTime, tollFee, location }) {
             <CardBody>
                 <Flex justify={'space-between'}>
                     <Flex direction={'column'}>
-                        <Text fontSize={'xl'} fontWeight={'bold'}>{plateNumber}</Text>
+                        {/* <Text fontSize={'xl'} fontWeight={'bold'}>{plateNumber}</Text> */}
+                        <VehicleProfile plateNumber={plateNumber}></VehicleProfile>
                         <Text>{formatCustomDate(recordedTime)} • {location}</Text>
                     </Flex>
                     <Flex direction={'column'} justifyContent={'center'}>

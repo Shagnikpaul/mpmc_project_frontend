@@ -4,7 +4,6 @@ import {
     ModalOverlay,
     ModalContent,
     ModalHeader,
-    ModalFooter,
     ModalBody,
     ModalCloseButton,
     useDisclosure,
@@ -18,25 +17,38 @@ import {
     Heading,
     CardFooter,
     VStack,
-    useColorMode
+    useColorMode,
 } from '@chakra-ui/react'
 import Barcode from 'react-barcode';
 import { useQuery } from '@tanstack/react-query';
 import { HiOutlineExternalLink } from "react-icons/hi";
 import { formatCustomDate } from '../../utils/TimeDateFormatter';
+import '@fontsource/fira-mono';
+
+
+
+
+
+
+
+
+
+
+
+
 
 function VehicleProfile({ plateNumber = "XXX_XXX_XXX" }) {
     const { isOpen, onOpen, onClose } = useDisclosure()
-    const {colorMode, setColorMode} = useColorMode()
+    const { colorMode, setColorMode } = useColorMode()
 
 
-    const { isPending, error, data } = useQuery({
+    const { isPending, data } = useQuery({
         queryKey: [`vehicleRecordOf${plateNumber}`],
         queryFn: async () => {
             const response = await fetch(
                 `https://mpmc-backend.onrender.com/get-vehicle-tolls/${plateNumber}`,
             )
-            
+
             return await response.json()
         },
         refetchInterval: 30000,
@@ -53,29 +65,38 @@ function VehicleProfile({ plateNumber = "XXX_XXX_XXX" }) {
         <>
             {/* <Button onClick={onOpen}>Open Modal</Button> */}
             <Flex><Link onClick={onOpen} fontSize={'xl'} fontWeight={'bold'} color={'blue.500'} marginRight={'5px'}> {plateNumber}</Link><Flex direction={'column'} justifyContent={'center'}><HiOutlineExternalLink size={'18px'} /></Flex></Flex>
-            <Modal isOpen={isOpen} onClose={onClose} isCentered scrollBehavior='inside' size={['lg','4xl','6xl']}>
+            <Modal isOpen={isOpen} onClose={onClose} isCentered scrollBehavior='inside' size={['lg', '4xl', '6xl']} >
                 <ModalOverlay />
                 <ModalContent>
-                    <ModalHeader textAlign={'center'}>Vehicle Record of {plateNumber}</ModalHeader>
+                    <ModalHeader>
+                        <Flex gap={'5'} justifyContent={'center'}>
+                            <Flex direction={'column'} justifyContent={'center'}>
+                                <Text> Vehicle Record of {plateNumber}</Text>
+                            </Flex>
+
+
+                        </Flex>
+
+                    </ModalHeader>
                     <ModalCloseButton />
                     <ModalBody>
 
                         <Container maxW='container.xl'>
                             {(isPending) ? <Text>Please wait loading vehicle records</Text> :
 
-                                <Card width={'full'} border={'2px'} borderColor={'gray'} borderStyle={'dotted'}>
+                                <Card width={'full'} border={'2px'} borderColor={'gray.300'} borderStyle={'dashed'}>
                                     <CardHeader>
-                                        <Text fontWeight={'medium'}>Plate Number</Text>
+                                        <Text  fontFamily={'Fira Mono'} fontWeight={500}>Plate Number</Text>
                                         <Heading size={'4xl'}>{data['tolls'][0]['plate_number']}</Heading>
 
                                     </CardHeader>
                                     <CardBody>
                                         <Flex justifyContent={'space-between'} wrap={'wrap'}>
                                             <Flex direction={'column'}>
-                                                <Text fontWeight={'medium'}>Total Due Amount</Text>
+                                                <Text fontFamily={'Fira Mono'} fontWeight={500}>Total Due Amount</Text>
                                                 <Heading>₹{data['due_amount']}</Heading>
                                             </Flex>
-                                            <Barcode lineColor={(colorMode === 'light') ? "#000000": "#FFFFFF"} value={plateNumber} height={'90'}></Barcode>
+                                            <Barcode lineColor={(colorMode === 'light') ? "#000000" : "#FFFFFF"} value={plateNumber} height={'90'}></Barcode>
                                         </Flex>
                                     </CardBody>
 

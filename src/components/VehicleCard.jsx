@@ -3,9 +3,8 @@ import React from 'react'
 import { formatCustomDate } from '../../utils/TimeDateFormatter'
 import { CiLocationArrow1 } from "react-icons/ci";
 import { FaRegClock } from "react-icons/fa";
-import QRCode from "react-qr-code";
-
-
+import '@fontsource/fira-mono';
+import Barcode from 'react-barcode';
 function VehicleCard({ plateNumber = "XXX_XXX_XXX", recordedTime = "2025-03-30T12:10:41.251+00:00", location = "Area 51", tollFee = 0.0 }) {
 
     return (
@@ -13,24 +12,26 @@ function VehicleCard({ plateNumber = "XXX_XXX_XXX", recordedTime = "2025-03-30T1
             <CardHeader>
                 <Flex justifyContent={'space-between'} wrap={'wrap'}>
                     <Flex direction={'column'}>
-                        <Text>Licence Plate Number</Text>
+                        <Text fontFamily={'Fira Mono'} fontWeight={500}>License Plate Number</Text>
                         <Heading size={['xl', '2xl', '4xl']} fontWeight={'black'}>{plateNumber}</Heading>
                     </Flex>
-                    <QRCode
-                        size={256}
-                        style={{ height: "auto", maxWidth: "15%", width: "15%" }}
-                        value={plateNumber}
-                        viewBox={`0 0 256 256`} />
+
                 </Flex>
 
 
 
             </CardHeader>
             <CardBody>
-                <Text>Toll Fee</Text>
-                <Heading>₹{tollFee}</Heading>
+                <Flex justifyContent={'space-between'} wrap={'wrap-reverse'}>
+                    <Flex direction={'column'}>
+                        <Text fontFamily={'Fira Mono'} fontWeight={500}>Toll Fee</Text>
+                        <Heading>₹{tollFee}</Heading>
+                    </Flex>
+                    <Barcode lineColor={"#000000"} value={plateNumber} height={'90'}></Barcode>
+                </Flex>
+
             </CardBody>
-            
+
             <CardFooter borderTop={'3px'} borderStyle={'dashed'} borderColor={'grey'}>
                 <Flex width={'full'} justifyContent={'space-between'}>
                     <Flex direction={'column'}>
